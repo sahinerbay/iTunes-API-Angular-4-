@@ -1,0 +1,62 @@
+@import '~sass/mixins';
+@import '~sass/variables';
+
+/* The Modal (background) */
+.modal {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+
+	&__content {
+    position: relative;
+    background-color: #fefefe;
+    outline: 15px solid white;
+  }
+  /* The Close Button */
+  &__content__close {
+    color: #f5f5f5;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+    &:hover,
+    &:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+  &__content__frame {
+    height: 100%;
+    width: 100%;
+  }
+  &__content__frame__image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  /* Information starts */
+  &__content__info {
+    font-size: .8rem;
+    color: white;
+    letter-spacing: .03rem;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    background: rgba(1,1,1, .7);
+  }
+
+  &__content__info__title {
+    padding: 0 5px;
+  }
+}

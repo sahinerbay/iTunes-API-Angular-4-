@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Rx';
 import { Itunes } from './../interfaces/itunes';
 
@@ -8,7 +8,13 @@ export class ShareDataService {
 
 	constructor() { }
 
-	private currentState = new ReplaySubject<Itunes>(1);
+	private defaultState: Itunes = {
+		resultCount: null,
+		results: [],
+		isModalActive: false
+	}
+
+	private currentState = new BehaviorSubject<Itunes>(this.defaultState);
 
 	updateState(data: Itunes) {
 		this.currentState.next(data)
@@ -16,6 +22,13 @@ export class ShareDataService {
 
 	getState(): Observable<Itunes> {
 		return this.currentState.asObservable();
+	}
+
+	updateModalActivity(modalActivity: boolean) {
+		let state = Object.assign({}, this.currentState.value, {
+			isModalActive: modalActivity
+		});
+		this.currentState.next(state)
 	}
 
 }

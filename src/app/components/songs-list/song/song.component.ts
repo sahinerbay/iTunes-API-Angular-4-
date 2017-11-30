@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ShareDataService } from './../../../services/share-data.service';
+import { Itunes } from './../../../interfaces/itunes';
 
 @Component({
   selector: 'app-song',
@@ -8,12 +9,23 @@ import { Input } from '@angular/core';
 })
 export class SongComponent implements OnInit {
 
-  constructor() { }
+	constructor(private shareDataService: ShareDataService) { }
+	
+	private isModalActive: boolean = false;
 
-	@Input() song;
+	setModalActive(event) {
+		event.preventDefault();
+		this.isModalActive = true;
+		this.shareDataService.updateModalActivity(true);
+	}
+
+	@Input() song: Array<string>;
 
   ngOnInit() {
-		console.log(this.song)
+		this.shareDataService.getState() 
+		.subscribe((result:Itunes) => {
+			this.isModalActive = result.isModalActive;
+		})
   }
 
 }

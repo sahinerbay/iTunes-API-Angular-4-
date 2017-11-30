@@ -1,5 +1,6 @@
 <div class="songs-list">
 	<div *ngFor="let song of songsList.results">
 		<app-song [song]="song"></app-song>
+		<app-song-modal *ngIf="songsList.isModalActive" [song] = "song"></app-song-modal>
 	</div>
 </div>

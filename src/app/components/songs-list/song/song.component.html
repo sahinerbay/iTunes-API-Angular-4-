@@ -1,6 +1,6 @@
 <div class="song">
 	<div class="song__artwork">
-		<a href="">
+		<a href="#" (click) = "setModalActive($event)">
 			<img src={{song.artworkUrl100}} alt= {{song.trackName}}>
 		</a>
 	</div>
@@ -9,4 +9,5 @@
 		<p class="song__info__artist">{{song.artistName}}</p>
 		<p class="song__info__collection">{{song.collectionName}}</p>
 	</div>
+	<ng-content></ng-content>
 </div>

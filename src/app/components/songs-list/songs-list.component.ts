@@ -14,28 +14,30 @@ export class SongsListComponent implements OnInit {
 
 	private songsList: Itunes = {
 		resultCount: null,
-		results: []
+		results: [],
+		isModalActive: false
 	}
-
-	private songs = [1, 2, 3, 4];
 
 	ngOnInit() {
 		this.storeSongs();
-		this.getSongsList(this.songsList);
+		this.getSongsList();
 	}
 
 	storeSongs() {
 		this.httpItunesService.getPosts()
 			.subscribe((result: Itunes) => {
-				this.shareDataService.updateState(result);
+				let state = Object.assign({}, result, {
+					isModalActive: this.songsList.isModalActive
+				});
+				this.shareDataService.updateState(state);
 			})
 	}
 
-	getSongsList(songs: Itunes) {
+	getSongsList() {
 		this.shareDataService.getState()
 			.subscribe((result: Itunes) => {
-				this.songsList.resultCount = result.resultCount;
-				this.songsList.results = result.results;
+				this.songsList = result;
+				console.log(result.isModalActive)
 			})
 	}
 

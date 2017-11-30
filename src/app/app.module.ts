@@ -11,13 +11,15 @@ import { ShareDataService } from './services/share-data.service';
 import { AppComponent } from './app.component';
 import { SongsListComponent } from './components/songs-list/songs-list.component';
 import { SongComponent } from './components/songs-list/song/song.component';
+import { SongModalComponent } from './components/songs-list/song/song-modal/song-modal.component';
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		SongsListComponent,
-		SongComponent
+		SongComponent,
+		SongModalComponent
 	],
 	imports: [
 		BrowserModule,
