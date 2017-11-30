@@ -26,3 +26,11 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#09a9bc', endColorstr='#4392df',GradientType=0 ); /* ie6-9 */
 	@content;
 }
+
+@mixin customFont($fontFamily, $fontWeight, $fontSize) {
+	font-family: $fontFamily;
+	font-weight: $fontWeight;
+	font-size: $fontSize;
+	color: #fff;
+	@content;
+}

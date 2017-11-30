@@ -1,6 +1,47 @@
+@import '~sass/mixins';
+@import '~sass/variables';
+
+
+:host {
+	display: grid;
+	margin-bottom: 3px;
+}
+
 .song {
 	display: grid;
-	grid-template-columns: 1fr 4fr;
+	grid-template-columns: auto 5fr;
 	grid-column-gap: 7px;
 	padding: 8px;
+	@include background;
+
+	&__info {
+		display: grid;
+		grid-template-rows: auto 1fr 1fr;
+
+	}
+
+	&__info__title, &__info__artist, &__info__collection {
+		margin: 0;
+		padding: 0;
+	}
+
+	&__info__title {
+		@include customFont($roboto, $bold, $tall);
+		
+	}
+
+	&__info__artist {
+		@include customFont($roboto, $regular, $medium);
+		align-self: start;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	&__info__collection {
+		@include customFont($roboto, $thin, $medium);
+		align-self: end;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	
 }
