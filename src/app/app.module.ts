@@ -1,18 +1,32 @@
+/*MODULES*/
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
+/*SERVICES*/
+import { HttpItunesService } from './services/http-itunes.service';
+import { ShareDataService } from './services/share-data.service';
 
+/*COMPONENTS*/
 import { AppComponent } from './app.component';
+import { SongsListComponent } from './components/songs-list/songs-list.component';
+import { SongComponent } from './components/songs-list/song/song.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		SongsListComponent,
+		SongComponent
+	],
+	imports: [
+		BrowserModule,
+		HttpClientModule
+	],
+	providers: [
+		HttpItunesService,
+		ShareDataService
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
