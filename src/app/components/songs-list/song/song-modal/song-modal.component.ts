@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShareDataService } from './../../../../services/share-data.service';
 import { Itunes } from './../../../../interfaces/itunes';
 
@@ -12,13 +12,13 @@ export class SongModalComponent implements OnInit {
 	constructor(private shareDataService: ShareDataService) { }
 
 	private isModalActive: boolean = false;
-
-	@Input() song: Array<string>;
+	private song:any;
 
 	ngOnInit() {
 		this.shareDataService.getState()
 			.subscribe((result: Itunes) => {
 				this.isModalActive = result.isModalActive;
+				this.song = result.currentSong[0];
 			})
 	}
 

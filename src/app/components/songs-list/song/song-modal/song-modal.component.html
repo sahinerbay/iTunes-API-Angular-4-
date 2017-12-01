@@ -1,7 +1,34 @@
-<div class="modal" (click) = "setModalInactive($event)">
-  <div class="modal__content">
-    <app-song [song]="song">
-			<p>sdfsafsaf</p>
-		</app-song>
-  </div>
+<div class="modal" (click)="setModalInactive($event)">
+	<div class="modal__content">
+		<div class="song song-margin-bottom">
+			<div class="song__artwork">
+				<a class="song__artwork__link" href="#" (click)="setModalActive($event)">
+					<img src={{song.artworkUrl100}} alt={{song.trackName}} [attr.data-id]="song.trackId">
+				</a>
+			</div>
+			<div class="song__info">
+				<h2 class="song__info__title">{{song.trackName}}</h2>
+				<p class="song__info__artist">{{song.artistName}}</p>
+				<p class="song__info__collection">{{song.collectionName}}</p>
+			</div>
+		</div>
+
+		<div class="settings">
+			<div class="settings__play">
+				Play
+				<i class="fa fa-play-circle" aria-hidden="true"></i>
+			</div>
+			<div class="settings__add">
+					<p class="settings__add__favourites">Add to favourites</p>
+					<p class="settings__add__playlist">Add to playlist</p>
+			</div>
+			<div class="settings__buttons">
+				<div class="settings__buttons__album">
+					<span class="settings__buttons__album__title">Buy Album</span> ({{song.collectionPrice}}&euro;)</div>
+				<div class="settings__buttons__track">
+					<span class="settings__buttons__track__title">Buy Track</span> ({{song.trackPrice}}&euro;)</div>
+			</div>
+		</div>
+
+	</div>
 </div>

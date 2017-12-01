@@ -2,6 +2,70 @@
 @import '~sass/variables';
 
 /* The Modal (background) */
+.song {
+	position: relative;
+	background: none;
+	margin: 0 auto;
+	padding: 0;
+
+	&::before {
+    content: '';
+    display: block;
+		position: absolute;
+		bottom: -10px;
+    width: 100%;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: #ffffff4f;
+	}
+
+	&-margin-bottom {
+		margin-bottom: 20px;
+	}
+}
+.settings {
+	display: grid;
+	grid-template-rows: 2fr 1.5fr 2fr;
+
+	&__play {
+		font-size: 3.625rem;
+    color: white;
+    font-weight: 800;
+    text-indent: -3px;
+	}
+
+	&__add {
+		align-self: end;
+	}
+
+	&__add__favourites, &__add__playlist {
+		margin: 0;
+		color: white;
+		@include customFont($roboto, $light, $medium);
+		line-height: 1.0625;
+		}
+
+	&__buttons {
+		align-self: end;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 6px;
+	}
+	
+	&__buttons__album, &__buttons__track {
+		@include button;
+		@include customFont($roboto, $bold, $medium);
+		line-height: 1.0625;
+		color: black;
+	}
+
+	&__buttons__album__title, &__buttons__track__title {
+		color: #4392df;
+	}
+
+	
+}
+
 .modal {
 	display: flex;
   justify-content: center;
@@ -17,9 +81,12 @@
 	background-color: rgba(0, 0, 0, 0.4);
 
 	&__content {
-    position: relative;
-    background-color: #fefefe;
-    outline: 15px solid white;
+		position: relative;
+		width: 90%;
+		min-height: 300px;
+		background: linear-gradient(159deg, #09a9bc 0%, #09a9bc 17%, #4392df 83%, #4392df 100%);
+		padding: 20px;
+		box-sizing: border-box;
   }
   /* The Close Button */
   &__content__close {

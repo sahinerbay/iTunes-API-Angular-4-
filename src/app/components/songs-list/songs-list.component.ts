@@ -15,7 +15,8 @@ export class SongsListComponent implements OnInit {
 	private songsList: Itunes = {
 		resultCount: null,
 		results: [],
-		isModalActive: false
+		isModalActive: false,
+		currentSong: null
 	}
 
 	ngOnInit() {
