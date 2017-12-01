@@ -1,0 +1,27 @@
+@import '~sass/mixins';
+@import '~sass/variables';
+
+.purchase-button {
+	
+	@include atMobile {
+		@include button;
+		@include customFont($roboto, $bold, $medium);
+		line-height: 1.0625;
+		color: black;
+
+		&__title {
+			color: #4392df;
+		}
+	}
+
+	@include atTablet {
+		@include customFont($roboto, $regular, $medium);
+
+		color: white;
+		
+		&__title {
+			color: white;
+		}
+	}
+
+}

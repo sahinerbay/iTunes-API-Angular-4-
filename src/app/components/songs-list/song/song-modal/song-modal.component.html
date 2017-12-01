@@ -14,19 +14,14 @@
 		</div>
 
 		<div class="settings">
-			<div class="settings__play">
-				Play
-				<i class="fa fa-play-circle" aria-hidden="true"></i>
-			</div>
+			<app-play-button></app-play-button>
 			<div class="settings__add">
-					<p class="settings__add__favourites">Add to favourites</p>
-					<p class="settings__add__playlist">Add to playlist</p>
+				<app-add-button [content]="'Add to favourites'"></app-add-button>
+				<app-add-button [content]="'Add to playlist'"></app-add-button>
 			</div>
 			<div class="settings__buttons">
-				<div class="settings__buttons__album">
-					<span class="settings__buttons__album__title">Buy Album</span> ({{song.collectionPrice}}&euro;)</div>
-				<div class="settings__buttons__track">
-					<span class="settings__buttons__track__title">Buy Track</span> ({{song.trackPrice}}&euro;)</div>
+				<app-purchase-button [price]="song.collectionPrice" [content]="'Buy Album'"></app-purchase-button>
+				<app-purchase-button [price]="song.trackPrice" [content]="'Buy Track'"></app-purchase-button>
 			</div>
 		</div>
 

@@ -1,18 +1,15 @@
 @import '~sass/mixins';
 @import '~sass/variables';
 
-
-:host {
-	display: grid;
-	margin-bottom: 3px;
-}
-
 .song {
 	display: grid;
 	grid-template-columns: auto 5fr;
 	grid-column-gap: 7px;
-	padding: 8px;
+	padding: 10px 20px 9px 8px;
 	@include background;
+	border-width: 0 0 2px 0;
+	border-style: solid;
+	border-color: #ffffffba;
 
 	&__artwork__link {
 		display: block;
@@ -21,7 +18,6 @@
 	&__info {
 		display: grid;
 		grid-template-rows: auto 1fr 1fr;
-
 	}
 
 	&__info__title, &__info__artist, &__info__collection {
@@ -47,6 +43,41 @@
 		align-self: end;
 		white-space: nowrap;
 		overflow: hidden;
+	}
+
+	&__info__purchase {
+		display: none;
+	}
+
+	&__settings {
+		display: none;
+	}
+
+	@include atTablet {
+
+		grid-template-columns: auto 5fr 2fr;
+
+		&__info {
+			grid-template-rows: auto 1fr 1fr 1fr;
+		}
+
+		&__info__purchase {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-column-gap: 20px;
+			align-self: end;
+		}
+
+		&__settings {
+			display: grid;
+			justify-content: right;
+			grid-template-rows: 1fr 1fr;
+		}
+
+		&__settings__add {
+			align-self: end;
+			text-align: right;
+		}
 	}
 	
 }

@@ -1,0 +1,13 @@
+@import '~sass/mixins';
+@import '~sass/variables';
+
+.play-button {
+	font-size: 3.625rem;
+	color: white;
+	font-weight: 800;
+	text-indent: -3px;
+
+	@include atTablet {
+		font-size: 1.5rem;
+	}
+}

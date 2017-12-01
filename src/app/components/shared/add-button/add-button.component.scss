@@ -1,0 +1,27 @@
+@import '~sass/mixins';
+@import '~sass/variables';
+
+.add {
+	margin: 0;
+	color: white;
+	text-decoration: none;
+	@include customFont($roboto, $light, $medium);
+	line-height: 1.0625;
+
+	@include atMobile {
+		.fa {
+			display: none;
+		}
+	}
+
+	@include atTablet {
+		font-size: 1.5rem;
+		
+		&__content {
+			display: none;
+		}
+		.fa {
+			display: inline-block;
+		}
+	}
+	}
