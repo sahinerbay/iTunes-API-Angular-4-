@@ -38,7 +38,6 @@ export class SongsListComponent implements OnInit {
 		this.shareDataService.getState()
 			.subscribe((result: Itunes) => {
 				this.songsList = result;
-				console.log(result.isModalActive)
 			})
 	}
 

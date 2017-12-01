@@ -12,14 +12,13 @@ export class SongModalComponent implements OnInit {
 	constructor(private shareDataService: ShareDataService) { }
 
 	private isModalActive: boolean = false;
-	private song:any;
+	private song: Object;
 
 	ngOnInit() {
 		this.shareDataService.getState()
 			.subscribe((result: Itunes) => {
 				this.isModalActive = result.isModalActive;
 				this.song = result.currentSong[0];
-				console.log(this.song)
 			})
 	}
 

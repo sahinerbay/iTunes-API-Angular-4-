@@ -12,6 +12,6 @@ export class SongInfoComponent implements OnInit {
   ngOnInit() {
 	}
 	
-	@Input() song;
+	@Input() song: Array<string>;
 
 }

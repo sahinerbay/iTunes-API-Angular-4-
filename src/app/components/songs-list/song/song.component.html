@@ -1,11 +1,9 @@
 <div class="song">
-	<div class="song__artwork">
-		<app-song-artwork [song]="song"></app-song-artwork>
-	</div>
-		<app-song-info [song]="song" class="song__info">
-			<app-purchase-button [price]="song.collectionPrice" [content]="'Buy Album'"></app-purchase-button>
-			<app-purchase-button [price]="song.trackPrice" [content]="'Buy Track'"></app-purchase-button>
-		</app-song-info>
+	<app-song-artwork [song]="song" class="song__artwork"></app-song-artwork>
+	<app-song-info [song]="song" class="song__info">
+		<app-purchase-button [price]="song.collectionPrice" [content]="'Buy Album'"></app-purchase-button>
+		<app-purchase-button [price]="song.trackPrice" [content]="'Buy Track'"></app-purchase-button>
+	</app-song-info>
 	<div class="song__settings">
 		<app-play-button></app-play-button>
 		<div class="song__settings__add">
