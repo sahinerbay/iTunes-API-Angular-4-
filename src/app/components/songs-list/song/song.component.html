@@ -1,23 +1,16 @@
 <div class="song">
 	<div class="song__artwork">
-		<a class="song__artwork__link" href="#" (click)="setModalActive($event)">
-			<img src={{song.artworkUrl100}} alt={{song.trackName}} [attr.data-id]="song.trackId">
-		</a>
+		<app-song-artwork [song]="song"></app-song-artwork>
 	</div>
-	<div class="song__info">
-		<h2 class="song__info__title">{{song.trackName}}</h2>
-		<p class="song__info__artist">{{song.artistName}}</p>
-		<p class="song__info__collection">{{song.collectionName}}</p>
-		<div class="song__info__purchase">
-				<app-purchase-button [price]="song.collectionPrice" [content]="'Buy Album'"></app-purchase-button>
-				<app-purchase-button [price]="song.trackPrice" [content]="'Buy Track'"></app-purchase-button>
-		</div>
-	</div>
+		<app-song-info [song]="song" class="song__info">
+			<app-purchase-button [price]="song.collectionPrice" [content]="'Buy Album'"></app-purchase-button>
+			<app-purchase-button [price]="song.trackPrice" [content]="'Buy Track'"></app-purchase-button>
+		</app-song-info>
 	<div class="song__settings">
 		<app-play-button></app-play-button>
 		<div class="song__settings__add">
-				<app-add-button [content]="'Add to favourites'"></app-add-button>
-				<app-add-button [content]="'Add to playlist'"></app-add-button>
+			<app-add-button [content]="'Add to favourites'"></app-add-button>
+			<app-add-button [content]="'Add to playlist'"></app-add-button>
 		</div>
 	</div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ShareDataService } from './../../../../services/share-data.service';
-import { Itunes } from './../../../../interfaces/itunes';
+import { ShareDataService } from './../../../services/share-data.service';
+import { Itunes } from './../../../interfaces/itunes';
 
 @Component({
 	selector: 'app-song-modal',
@@ -19,6 +19,7 @@ export class SongModalComponent implements OnInit {
 			.subscribe((result: Itunes) => {
 				this.isModalActive = result.isModalActive;
 				this.song = result.currentSong[0];
+				console.log(this.song)
 			})
 	}
 

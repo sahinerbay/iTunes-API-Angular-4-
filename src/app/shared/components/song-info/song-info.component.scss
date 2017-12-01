@@ -1,0 +1,42 @@
+@import '~sass/mixins';
+@import '~sass/variables';
+
+.info__title, .info__artist, .info__collection {
+	margin: 0;
+	padding: 0;
+}
+
+.info__title {
+	@include customFont($roboto, $bold, $tall);
+	letter-spacing: 0.05rem;
+}
+
+.info__artist {
+	@include customFont($roboto, $regular, $medium);
+	line-height: 1.3;
+	align-self: start;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.info__collection {
+	@include customFont($roboto, $thin, $medium);
+	align-self: end;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.info__purchase {
+	display: none;
+}
+
+@include atTablet {
+	
+			.info__purchase {
+				display: grid;
+				grid-template-columns: auto 1fr;
+				grid-column-gap: 20px;
+				align-self: end;
+			}
+	
+	}

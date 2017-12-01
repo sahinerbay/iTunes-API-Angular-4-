@@ -38,6 +38,13 @@
 		grid-template-columns: 1fr 1fr;
 		grid-column-gap: 6px;
 	}
+
+	@include atTablet {
+		&__buttons {
+			grid-template-columns: auto 1fr;
+			grid-column-gap: 20px;
+		}
+	}
 	
 }
 
@@ -58,7 +65,6 @@
 	&__content {
 		position: relative;
 		width: 90%;
-		min-height: 300px;
 		background: linear-gradient(159deg, #09a9bc 0%, #09a9bc 17%, #4392df 83%, #4392df 100%);
 		padding: 20px;
 		box-sizing: border-box;
@@ -100,5 +106,7 @@
 
   &__content__info__title {
     padding: 0 5px;
-  }
+	}
+	
+	
 }
