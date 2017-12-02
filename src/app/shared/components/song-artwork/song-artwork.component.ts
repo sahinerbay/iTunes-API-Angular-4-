@@ -19,7 +19,8 @@ export class SongArtworkComponent implements OnInit {
 		event.preventDefault();
 		this.isModalActive = true;
 		this.shareDataService.updateModalActivity(true);
-		this.shareDataService.updateCurrentSong(+event.target.attributes[3].value)
+		this.shareDataService.updateCurrentSong(+event.target.attributes['data-id'].value);
+		document.body.className = 'overflow-hidden';
 	}
 
 	@Input() song: Array<string>;

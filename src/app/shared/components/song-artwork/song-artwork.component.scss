@@ -1,3 +1,7 @@
 .artwork__link {
 	display: block;
+
+	& > img {
+		border-radius: 2px;
+	}
 }

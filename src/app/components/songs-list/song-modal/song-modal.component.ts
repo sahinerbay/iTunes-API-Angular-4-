@@ -26,6 +26,7 @@ export class SongModalComponent implements OnInit {
 		if (event.target.className === 'modal__content__close' || event.target.className === 'modal') {
 			this.isModalActive = false;
 			this.shareDataService.updateModalActivity(false);
+			document.body.className = 'overflow-visible';
 		}
 	}
 

@@ -2,25 +2,33 @@
 @import '~sass/variables';
 
 .purchase-button {
+
+	text-decoration: none;
+	@include customFont($roboto, $regular, $medium);
+	color: white;	
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&__title {
+		color: white;
+	}
 	
 	@include atMobile {
 		@include button;
 		@include customFont($roboto, $bold, $medium);
 		line-height: 1.0625;
-		color: black;
+		color: black;	
+
+		text-decoration: none;
+		
+		&:hover {
+			text-decoration: none;
+		}
 
 		&__title {
 			color: #4392df;
-		}
-	}
-
-	@include atTablet {
-		@include customFont($roboto, $regular, $medium);
-
-		color: white;
-		
-		&__title {
-			color: white;
 		}
 	}
 

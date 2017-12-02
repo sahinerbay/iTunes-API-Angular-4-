@@ -16,13 +16,13 @@ export class ShareDataService {
 	}
 
 	private currentState = new BehaviorSubject<Itunes>(this.defaultState);
+	
+	getState(): Observable<Itunes> {
+		return this.currentState.asObservable();
+	}
 
 	updateState(data: Itunes) {
 		this.currentState.next(data)
-	}
-
-	getState(): Observable<Itunes> {
-		return this.currentState.asObservable();
 	}
 
 	updateModalActivity(modalActivity: boolean) {

@@ -21,8 +21,21 @@
 		width: 90%;
 		background: linear-gradient(159deg, #09a9bc 0%, #09a9bc 17%, #4392df 83%, #4392df 100%);
 		padding: 20px;
+		border-radius: 5px;
 		box-sizing: border-box;
-  }
+	}
+	
+	@include atTablet {
+		&__content {
+			width: 80%;
+		}
+	}
+
+	@include atDesktop {
+		&__content {
+			width: 50%;
+		}
+	}
 	
 }
 
@@ -47,6 +60,12 @@
 	&-margin-bottom {
 		margin-bottom: 20px;
 	}
+
+	@include atTablet {
+		&__info__modal {
+			grid-template-rows: auto auto 1fr;
+		}
+	}
 }
 
 .settings {
@@ -64,7 +83,18 @@
 		grid-column-gap: 6px;
 	}
 
+	&__buttons__purchase {
+		display: grid;
+	}
+
 	@include atTablet {
+		grid-template-rows: 2fr 2fr;
+		grid-template-columns: 2fr 1fr;	
+
+		&__add {
+			text-align: right;
+		}
+
 		&__buttons {
 			grid-template-columns: auto 1fr;
 			grid-column-gap: 20px;

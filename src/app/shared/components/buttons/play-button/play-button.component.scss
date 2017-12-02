@@ -4,8 +4,8 @@
 .play-button {
 	font-size: 3.625rem;
 	color: white;
-	font-weight: 800;
-	text-indent: -3px;
+	font-weight: $bold;
+	cursor: pointer;
 
 	@include atTablet {
 		font-size: 1.5rem;

@@ -13,7 +13,7 @@
 
 	&__info {
 		display: grid;
-		grid-template-rows: auto 1fr 1fr;
+		grid-template-rows: auto auto 1fr;
 	}
 
 	&__settings {
@@ -23,6 +23,11 @@
 	@include atTablet {
 
 		grid-template-columns: auto 5fr 2fr;
+
+		&__artwork {
+			display: grid;
+			align-self: center;
+		}
 
 		&__info {
 			grid-template-rows: auto 1fr 1fr 1fr;

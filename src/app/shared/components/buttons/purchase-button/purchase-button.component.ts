@@ -12,8 +12,8 @@ export class PurchaseButtonComponent implements OnInit {
   ngOnInit() {
 	}
 	
-	@Input() price;
-	@Input() content;
+	@Input() price: string;
+	@Input() content: string;
+	@Input() viewUrl:string;
 	
-
 }

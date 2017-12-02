@@ -1,4 +1,4 @@
-<div class="play-button">
-	Play
-	<i class="fa fa-play-circle" aria-hidden="true"></i>
+<div class="play-button" (click) ="toggleButton()">
+	{{textContent}}
+	<i [class]="icon" aria-hidden="true"></i>
 </div>

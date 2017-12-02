@@ -12,11 +12,13 @@ import { AppComponent } from './app.component';
 import { SongsListComponent } from './components/songs-list/songs-list.component';
 import { SongComponent } from './components/songs-list/song/song.component';
 import { SongModalComponent } from './components/songs-list/song-modal/song-modal.component';
+/*COMPONENTS -SHARED*/
 import { PlayButtonComponent } from './shared/components/buttons/play-button/play-button.component';
 import { PurchaseButtonComponent } from './shared/components/buttons/purchase-button/purchase-button.component';
 import { AddButtonComponent } from './shared/components/buttons/add-button/add-button.component';
 import { SongArtworkComponent } from './shared/components/song-artwork/song-artwork.component';
 import { SongInfoComponent } from './shared/components/song-info/song-info.component';
+
 
 
 @NgModule({
@@ -29,7 +31,7 @@ import { SongInfoComponent } from './shared/components/song-info/song-info.compo
 		PurchaseButtonComponent,
 		AddButtonComponent,
 		SongArtworkComponent,
-		SongInfoComponent
+		SongInfoComponent,
 	],
 	imports: [
 		BrowserModule,

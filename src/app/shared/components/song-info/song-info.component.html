@@ -1,5 +1,5 @@
-<h2 class="info__title">{{song.trackName}}</h2>
-<p class="info__artist">{{song.artistName}}</p>
+<h2 class="info__title" [attr.data-id]="song.trackId" (click)="setModalActive($event)" >{{song.trackName}}</h2>
+<p class="info__artist"><a class="info__artist__link" target="_blank" [href]="song.artistViewUrl">{{song.artistName}}</a></p>
 <p class="info__collection">{{song.collectionName}}</p>
 <div class="info__purchase">
 		<ng-content></ng-content>
