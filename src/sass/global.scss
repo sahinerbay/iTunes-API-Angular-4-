@@ -1,3 +1,4 @@
+@import '~sass/mixins';
 @import '~sass/variables';
 
 body {
@@ -10,4 +11,13 @@ body {
 
 .overflow-visible {
 	overflow: visible;
+}
+
+.modal__content .timeline--modal {
+	top: 5px;
+
+	@include atTablet {
+		left:0 !important;
+		right:0 !important;
+	}
 }

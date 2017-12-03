@@ -11,3 +11,35 @@
 		font-size: 1.5rem;
 	}
 }
+
+.timeline{
+	position: absolute;
+	height: 5px;
+	background: #ffffffba;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	@include atMobile {
+		left: 0px;
+		right: 0px;
+		top: 10px;
+	}
+
+	@include atTablet {
+		bottom: 5px;
+    left: 7px;
+		right: 20px;
+	}
+}
+
+
+
+#playhead{
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	margin-top: -2px;
+	background: black;
+} 

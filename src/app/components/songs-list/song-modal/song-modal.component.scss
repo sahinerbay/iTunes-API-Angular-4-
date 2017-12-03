@@ -25,6 +25,7 @@
 		box-sizing: border-box;
 	}
 	
+	
 	@include atTablet {
 		&__content {
 			width: 80%;
@@ -46,21 +47,6 @@
 	padding: 0;
 	border: none;
 
-	&::before {
-    content: '';
-    display: block;
-		position: absolute;
-		bottom: -10px;
-    width: 100%;
-    border-width: 0 0 2px 0;
-    border-style: solid;
-    border-color: #ffffff4f;
-	}
-
-	&-margin-bottom {
-		margin-bottom: 20px;
-	}
-
 	@include atTablet {
 		&__info__modal {
 			grid-template-rows: auto auto 1fr;
@@ -69,8 +55,10 @@
 }
 
 .settings {
+	position: relative;
 	display: grid;
 	grid-template-rows: 2fr 1.5fr 2fr;
+	padding-top: 20px;
 
 	&__add {
 		align-self: end;

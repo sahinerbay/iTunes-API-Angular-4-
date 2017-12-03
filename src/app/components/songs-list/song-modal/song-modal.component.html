@@ -1,12 +1,12 @@
 <div class="modal" (click)="setModalInactive($event)">
 	<div class="modal__content">
-		<div class="song song-margin-bottom">
+		<div class="song">
 			<app-song-artwork [song]="song" class="song__artwork"></app-song-artwork>
 			<app-song-info [song]="song" class="song__info song__info__modal"></app-song-info>
 		</div>
 
 		<div class="settings">
-			<app-play-button></app-play-button>
+			<app-play-button [songUrl] = "song.previewUrl" ></app-play-button>
 			<div class="settings__add">
 				<app-add-button [content]="'Add to favourites'"></app-add-button>
 				<app-add-button [content]="'Add to playlist'"></app-add-button>

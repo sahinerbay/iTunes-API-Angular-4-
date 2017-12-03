@@ -5,7 +5,7 @@
 		<app-purchase-button [viewUrl]="song.trackViewUrl" [price]="song.trackPrice" [content]="'Buy Track'"></app-purchase-button>
 	</app-song-info>
 	<div class="song__settings">
-		<app-play-button></app-play-button>
+		<app-play-button [songUrl] ="song.previewUrl"></app-play-button>
 		<div class="song__settings__add">
 			<app-add-button [content]="'Add to favourites'"></app-add-button>
 			<app-add-button [content]="'Add to playlist'"></app-add-button>

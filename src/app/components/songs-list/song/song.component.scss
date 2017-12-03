@@ -5,11 +5,9 @@
 	display: grid;
 	grid-template-columns: auto 5fr;
 	grid-column-gap: 7px;
-	padding: 10px 20px 9px 8px;
+	padding: 10px 20px 15px 8px;
 	@include background;
-	border-width: 0 0 2px 0;
-	border-style: solid;
-	border-color: #ffffffba;
+	position: relative;
 
 	&__info {
 		display: grid;
@@ -21,7 +19,7 @@
 	}
 
 	@include atTablet {
-
+		padding: 10px 20px 20px 8px;
 		grid-template-columns: auto 5fr 2fr;
 
 		&__artwork {
