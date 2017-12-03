@@ -27,7 +27,6 @@ export class SongComponent implements OnInit {
 		this.shareDataService.getState() 
 		.subscribe((result:Itunes) => {
 			this.isModalActive = result.isModalActive;
-			console.log(result)
 		})
   }
 

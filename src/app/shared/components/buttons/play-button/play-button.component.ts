@@ -27,7 +27,7 @@ export class PlayButtonComponent implements OnInit, AfterViewInit {
 
 	@Input() songUrl;
 
-	@ViewChild('music') private music: ElementRef;
+	@ViewChild('player') private player: ElementRef;
 	@ViewChild('playerButton') private playerButton: ElementRef;
 	@ViewChild('timeline') private timeline: ElementRef;
 	@ViewChild('playHead') private playHead: ElementRef;
@@ -42,26 +42,26 @@ export class PlayButtonComponent implements OnInit, AfterViewInit {
 
 	ngAfterViewInit() {
 
-		this.duration = this.music.nativeElement.duration;
+		this.duration = this.player.nativeElement.duration;
 		this.timelineWidth = this.timeline.nativeElement.offsetWidth - this.playHead.nativeElement.offsetWidth;
 
 		this.renderer.listen(this.playerButton.nativeElement, 'click', () => {
 			this.play();
 		});
 
-		this.musicListenerFn = this.renderer.listen(this.music.nativeElement, 'timeupdate', () => {
+		this.musicListenerFn = this.renderer.listen(this.player.nativeElement, 'timeupdate', () => {
 			this.timeUpdate();
 			return false;
 		});
 
-		this.renderer.listen(this.music.nativeElement, 'canplaythrough', () => {
-			this.duration = this.music.nativeElement.duration;
+		this.renderer.listen(this.player.nativeElement, 'canplaythrough', () => {
+			this.duration = this.player.nativeElement.duration;
 			return false;
 		});
 
 		this.renderer.listen(this.timeline.nativeElement, 'click', (event) => {
 			this.moveplayhead(event);
-			this.music.nativeElement.currentTime = this.duration * this.clickPercent(event);
+			this.player.nativeElement.currentTime = this.duration * this.clickPercent(event);
 			return false;
 		});
 	}
@@ -81,9 +81,9 @@ export class PlayButtonComponent implements OnInit, AfterViewInit {
 	}
 
 	timeUpdate() {
-		var playPercent = this.timelineWidth * (this.music.nativeElement.currentTime / this.duration);
+		var playPercent = this.timelineWidth * (this.player.nativeElement.currentTime / this.duration);
 		this.playHead.nativeElement.style.marginLeft = playPercent + "px";
-		if (this.music.nativeElement.currentTime == this.duration) {
+		if (this.player.nativeElement.currentTime == this.duration) {
 			this.textContent = "Play"
 			this.icon = "fa fa-play-circle";
 			this.playHead.nativeElement.style.marginLeft = "0px";
@@ -91,11 +91,11 @@ export class PlayButtonComponent implements OnInit, AfterViewInit {
 	}
 
 	play() {
-		if (this.music.nativeElement.paused) {
-			this.music.nativeElement.play();
+		if (this.player.nativeElement.paused) {
+			this.player.nativeElement.play();
 
 		} else { // pause music
-			this.music.nativeElement.pause();
+			this.player.nativeElement.pause();
 
 		}
 	}

@@ -1,12 +1,13 @@
-<div class="play-button" #playerButton (click)="toggleButton()">
+<audio class="player" #player preload="true">
+	<source [src]="songUrl">
+	<source [src]="songUrl">
+</audio>
+
+<div class="player__play-button" #playerButton (click)="toggleButton()">
 	{{textContent}}
 	<i [class]="icon" aria-hidden="true"></i>
 </div>
 
-<audio id="music" #music preload="true">
-	<source [src]="songUrl">
-	<source [src]="songUrl">
-</audio>
-<div class="timeline timeline--modal" #timeline>
-	<div id="playhead" #playHead ></div>
+<div class="player__timeline player__timeline--modal" #timeline>
+	<div class="player__timeline__playhead" #playHead ></div>
 </div>
