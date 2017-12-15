@@ -5,5 +5,5 @@
 
 export const environment = {
 	production: false,
-	apiUrl: "https://itunes.apple.com/search?term=jack+johnson"
+	apiUrl: "https://itunes.apple.com/"
 };

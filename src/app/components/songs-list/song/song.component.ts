@@ -3,15 +3,15 @@ import { ShareDataService } from './../../../services/share-data.service';
 import { Itunes } from './../../../interfaces/itunes';
 
 @Component({
-  selector: 'app-song',
-  templateUrl: './song.component.html',
+	selector: 'app-song',
+	templateUrl: './song.component.html',
 	styleUrls: ['./song.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
 export class SongComponent implements OnInit {
 
 	constructor(private shareDataService: ShareDataService) { }
-	
+
 	private isModalActive: boolean = false;
 
 	setModalActive(event) {
@@ -23,11 +23,11 @@ export class SongComponent implements OnInit {
 
 	@Input() song: Array<string>;
 
-  ngOnInit() {
-		this.shareDataService.getState() 
-		.subscribe((result:Itunes) => {
-			this.isModalActive = result.isModalActive;
-		})
-  }
+	ngOnInit() {
+		this.shareDataService.getState()
+			.subscribe((result: Itunes) => {
+				this.isModalActive = result.isModalActive;
+			})
+	}
 
 }

@@ -8,8 +8,9 @@ export class HttpItunesService {
 
 	constructor(private http: HttpClient) { }
 
-	getPosts(): Observable<any> {
-		return this.http.get(environment.apiUrl);
+	getPosts(search_term:String): Observable<any> {
+		let URL = `${environment.apiUrl}search?term=${search_term}&entity=musicVideo`;
+		return this.http.get(URL);
 	}
-
+	//search?term=jack+johnson
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpItunesService } from './../../services/http-itunes.service';
 import { ShareDataService } from './../../services/share-data.service';
 import { Itunes } from './../../interfaces/itunes';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
 	selector: 'app-songs-list',
@@ -10,7 +12,7 @@ import { Itunes } from './../../interfaces/itunes';
 })
 export class SongsListComponent implements OnInit {
 
-	constructor(private httpItunesService: HttpItunesService, private shareDataService: ShareDataService) { }
+	constructor(private httpItunesService: HttpItunesService, private shareDataService: ShareDataService, private route: ActivatedRoute) { }
 
 	private songsList: Itunes = {
 		resultCount: null,
@@ -20,12 +22,16 @@ export class SongsListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.storeSongs();
+		this.route.queryParamMap
+		.subscribe(params => {
+			this.storeSongs(params.get('term'));
+		})
+		
 		this.getSongsList();
 	}
 
-	storeSongs() {
-		this.httpItunesService.getPosts()
+	storeSongs(search_term:String) {
+		this.httpItunesService.getPosts(search_term)
 			.subscribe((result: Itunes) => {
 				let state = Object.assign({}, result, {
 					isModalActive: this.songsList.isModalActive,
