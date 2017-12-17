@@ -12,5 +12,10 @@ export class HttpItunesService {
 		let URL = `${environment.apiUrl}search?term=${search_term}&entity=musicVideo`;
 		return this.http.get(URL);
 	}
+
+	registerUser(data) {
+		console.log('get method is sent')
+		return this.http.post('http://localhost:3000/api/register', data);
+	}
 	//search?term=jack+johnson
 }

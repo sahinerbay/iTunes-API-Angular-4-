@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpItunesService } from './../../../../services/http-itunes.service';
 
 @Component({
 	selector: 'app-register',
@@ -7,12 +8,15 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+		constructor(private httpService: HttpItunesService){};
 
 	onSubmit(f) {
-		if (f.valid) {
-			console.log(f.value)
-
-		}
+		console.log(f.value)
+			this.httpService.registerUser(f.value).subscribe((res)=> {
+				console.log(res)
+			},
+			err => console.log(err)
+		)
 	}
 
 	onValid(form, input) {
