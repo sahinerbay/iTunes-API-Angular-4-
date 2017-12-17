@@ -3,10 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppRoutingModule } from'./app-routing.module';
 
 /*SERVICES*/
 import { HttpItunesService } from './services/http-itunes.service';
 import { ShareDataService } from './services/share-data.service';
+import { MyHttpLogInterceptor } from './services/my-http-log-interceptor.service';
+
 
 /*COMPONENTS*/
 import { AppComponent } from './app.component';
@@ -14,18 +19,17 @@ import { SongsListComponent } from './components/songs-list/songs-list.component
 import { SongComponent } from './components/songs-list/song/song.component';
 import { SongModalComponent } from './components/songs-list/song-modal/song-modal.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
 /*COMPONENTS -SHARED*/
 import { PlayButtonComponent } from './shared/components/buttons/play-button/play-button.component';
 import { PurchaseButtonComponent } from './shared/components/buttons/purchase-button/purchase-button.component';
 import { AddButtonComponent } from './shared/components/buttons/add-button/add-button.component';
 import { SongArtworkComponent } from './shared/components/song-artwork/song-artwork.component';
 import { SongInfoComponent } from './shared/components/song-info/song-info.component';
-
-const appRoutes : Routes = [
-	{ path: 'search', component:SongsListComponent}, 
-	{ path: '', component:HomePageComponent}
- ];
+import { RegisterComponent } from './shared/components/form/register/register.component';
+import { LoginComponent } from './shared/components/form/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeLogoComponent } from './shared/components/home-logo/home-logo.component';
+import { FormValidatorComponent } from './shared/components/form/form-validator/form-validator.component';
 
 @NgModule({
 	declarations: [
@@ -39,16 +43,26 @@ const appRoutes : Routes = [
 		SongArtworkComponent,
 		SongInfoComponent,
 		SearchBarComponent,
-		HomePageComponent,
+		RegisterComponent,
+		LoginComponent,
+		HeaderComponent,
+		HomeLogoComponent,
+		FormValidatorComponent,
 	],
 	imports: [
 		BrowserModule,
 		HttpClientModule,
-		RouterModule.forRoot(appRoutes)
+		FormsModule,
+		AppRoutingModule
 	],
 	providers: [
 		HttpItunesService,
-		ShareDataService
+		ShareDataService,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: MyHttpLogInterceptor,
+			multi: true,
+		}
 	],
 	bootstrap: [AppComponent]
 })

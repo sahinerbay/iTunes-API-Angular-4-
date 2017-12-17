@@ -1,0 +1,13 @@
+<app-home-logo></app-home-logo>
+<div class="login">
+	<h1 class="login__heading">
+		<strong>Welcome.</strong> Please login.</h1>
+	<form class="login__form" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate method="post">
+		<input type="text" name="user" placeholder="Username" required="required" class="login__form__input" ngModel/>
+		<input type="password" name="password" placeholder="Password" required="required" class="login__form__input" ngModel />
+		<button type="submit" class="login__form__button">Login</button>
+	</form>
+	<div class="login__footer">
+		<p>New to us? <a routerLink="/register">Sign Up</a></p>
+	</div>
+</div>

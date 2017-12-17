@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="registeration">
+		<h1 class="registeration__heading">
+			<strong>Welcome.</strong> Please register.</h1>
+		<form class="registeration__form" #f="ngForm" (ngSubmit)="onSubmit(f)" method="post" novalidate>
+			<input type="email" name="email" placeholder="Email" #email="ngModel" required class="registeration__form__input" ngModel
+			 pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+			/>
+			<span *ngIf="onValid(f, email)" class="help-block">Valid Email is required</span>
+
+			<input type="text" name="user" placeholder="Username min 8 chars 1 digit and 1 special" #username = "ngModel" required class="registeration__form__input" ngModel />
+			<span *ngIf="onValid(f, username)" class="help-block">Valid Username is required</span>			
+
+			<input type="password" name="password" placeholder="Password" #password="ngModel" required class="registeration__form__input" ngModel />
+			<span *ngIf="onValid(f, email)" class="help-block">Valid Password is required</span>			
+			<input type="password" name="password" placeholder="Confirm Password"  #confirmPassword="ngModel" required class="registeration__form__input" ngModel
+			/>
+			<span *ngIf="confirmPassword !== password" class="help-block">passwords needs to match</span>
+
+			<button type="submit" class="registeration__form__button">Register </button>
+		</form>
+	</div>
+</div>
