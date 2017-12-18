@@ -13,9 +13,12 @@ export class HttpItunesService {
 		return this.http.get(URL);
 	}
 
-	registerUser(data) {
-		console.log('get method is sent')
-		return this.http.post('http://localhost:3000/api/register', data);
+	registerUser(userProps) {
+		return this.http.post('http://localhost:3000/api/register', userProps);
+	}
+
+	loginUser(userProps) {
+		return this.http.post('http://localhost:3000/api/login', userProps)
 	}
 	//search?term=jack+johnson
 }

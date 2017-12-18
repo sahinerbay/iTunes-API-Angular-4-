@@ -11,6 +11,7 @@ import { AppRoutingModule } from'./app-routing.module';
 import { HttpItunesService } from './services/http-itunes.service';
 import { ShareDataService } from './services/share-data.service';
 import { MyHttpLogInterceptor } from './services/my-http-log-interceptor.service';
+import { AuthenticationService } from './services/authentication.service';
 
 
 /*COMPONENTS*/
@@ -58,6 +59,7 @@ import { FormValidatorComponent } from './shared/components/form/form-validator/
 	providers: [
 		HttpItunesService,
 		ShareDataService,
+		AuthenticationService,
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: MyHttpLogInterceptor,
