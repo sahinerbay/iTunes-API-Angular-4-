@@ -31,6 +31,7 @@ import { LoginComponent } from './shared/components/form/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeLogoComponent } from './shared/components/home-logo/home-logo.component';
 import { FormValidatorComponent } from './shared/components/form/form-validator/form-validator.component';
+import { HomeComponent } from './components/home.component';
 
 @NgModule({
 	declarations: [
@@ -49,6 +50,7 @@ import { FormValidatorComponent } from './shared/components/form/form-validator/
 		HeaderComponent,
 		HomeLogoComponent,
 		FormValidatorComponent,
+		HomeComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
 
 	onSubmit(f) {
 		this.httpService.loginUser(f.value).subscribe((result: ApiResponse) => {
-			this.http.get('http://localhost:3000/api/').subscribe(result => {
-
-			})
-			//this.router.navigate(['/search']);
+			if (result.auth) {
+				this.router.navigate(['/search']);
+				console.log('goes to /search')
+			}
 
 		},
 			(err) => console.log(err))

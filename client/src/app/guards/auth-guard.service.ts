@@ -10,15 +10,20 @@ export class AuthGuardService implements CanActivate {
 
 	constructor(private router: Router, private authenticationService: AuthenticationService) { }
 
-	canActivate():any {
-		// this.authenticationService.isLoggedIn()
-		// 	.subscribe((result:ApiResponse)=> {
-		// 		console.log(result)
-		// 		if(result.auth) return true;
-		// 		return false;
-		// 	}, (err) => console.log(err))
+	canActivate(): any {
+		return this.authenticationService.isLoggedIn()
+			.map((result: ApiResponse) => {
+				if (result.auth) {
+					console.log('auth works')
+					return true
+				};
+				//return this.router.navigate(['/login']);
+			}).catch(() => {
+            this.router.navigate(['/login']);
+            return Observable.of(false);
+        });
 
-	
+
 	}
 
 }

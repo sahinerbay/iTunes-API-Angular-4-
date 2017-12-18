@@ -18,7 +18,7 @@ export class HttpItunesService {
 	}
 
 	loginUser(userProps) {
-		return this.http.post('http://localhost:3000/api/login', userProps)
+		return this.http.post('http://localhost:3000/api/login', userProps, {withCredentials: true})
 	}
 	//search?term=jack+johnson
 }

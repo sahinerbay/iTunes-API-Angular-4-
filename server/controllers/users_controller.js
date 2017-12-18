@@ -38,11 +38,15 @@ module.exports = {
 					.then(result => {
 
 						req.session.userId = user._id;
-						console.log(req.session)
-						return result;
+						req.session.save();
+						return req.session;
 
 					})
-					.then(result => res.send(req.session))
+					.then(session => {
+						console.log(session);
+						session.save();
+						res.send(session)
+					})
 					.catch(next)
 
 			})

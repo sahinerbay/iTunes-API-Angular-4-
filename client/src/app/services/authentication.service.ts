@@ -7,7 +7,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   isLoggedIn() {
-	return this.http.get('http://localhost:3000/api/');
+	return this.http.get('http://localhost:3000/', {withCredentials: true});
   }
 
 }
