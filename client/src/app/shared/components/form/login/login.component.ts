@@ -1,31 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpItunesService } from './../../../../services/http-itunes.service';
 import { ApiResponse } from './../../../../interfaces/api';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { AbstractControlDirective, AbstractControl } from '@angular/forms';
 
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-	constructor(private httpService: HttpItunesService, private router: Router, private http: HttpClient) { };
+	constructor(private httpService: HttpItunesService, private router: Router) { };
 
-	ngOnInit() {
-	}
+	private isLoggedIn: Boolean;
 
 	onSubmit(f) {
-		this.httpService.loginUser(f.value).subscribe((result: ApiResponse) => {
-			if (result.auth) {
-				this.router.navigate(['/search']);
-				console.log('goes to /search')
-			}
-
-		},
-			(err) => console.log(err))
+		if (f.valid) {
+			this.httpService.loginUser(f.value).subscribe((result: ApiResponse) => {
+				if (result.loggedIn) {
+					this.isLoggedIn = result.loggedIn;
+					this.router.navigate(['/']);
+				} else {
+					console.log(result.message)
+				}
+			},
+				(err) => console.log(err))
+		}
 	}
 
 }

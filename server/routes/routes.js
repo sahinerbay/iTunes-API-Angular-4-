@@ -10,7 +10,7 @@ router.post('/register/', UserController.create);
 router.post('/login/', UserController.login);
 
 // Home page route
-router.get('/check/', );
+router.get('/logout/', UserController.logout);
 
 
 

@@ -1,14 +1,20 @@
 @import '~sass/mixins';
 @import '~sass/variables';
 
+:host {
+	position: absolute;
+	top: 10%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	left: 0;
+	bottom: 20%;
+	right: 0;
+}
 .login {
 	width: 90%;
 	margin: 0 auto;
-
-	&__heading {
-		font: 1.8em/48px "Tenor Sans", sans-serif;
-		color: white;
-	}
 
 	&__form__input {
 		width: 100%;
@@ -47,5 +53,31 @@
 		display: block;
 		width: 100%;
 		text-transform: uppercase;
+		
+		&:disabled {
+			cursor: not-allowed;
+		}
+
+		
 	}
+
+	&__footer__register {
+		color: white;
+	}
+
+	&__footer__register__link {
+		color: white;
+
+	}
+	
+
+	@include atTablet {
+		width: 50%;
+	}
+	
+	@include atDesktop {
+		width: 30%;
+	}
+
  }
+

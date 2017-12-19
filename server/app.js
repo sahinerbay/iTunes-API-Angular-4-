@@ -48,8 +48,8 @@ app.use(function (req, res, next) {
  We are telling express server public folder is the place to look for the static files
 */
 //app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', (req, res, next) => {
-
+app.get('/', (req, res, next) => {
+	console.log('auth')
 	if (req.session && req.session.userId) {
 		res.json({
 			"auth": true

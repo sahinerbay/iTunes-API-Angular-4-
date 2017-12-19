@@ -1,3 +1,24 @@
-<p>
-  header works!
-</p>
+<nav class="menu" >
+	<input type="checkbox" id="nav" class="hidden" />
+	<label for="nav" class="menu__collapsed">
+		<i></i>
+		<i></i>
+		<i></i>
+	</label>
+	<div class="menu__container">
+		<ul class="menu__container__list">
+			<li class="menu__container__list__item">
+				<a class="menu__container__list__item__link" href="#">Work</a>
+			</li>
+			<li class="menu__container__list__item">
+				<a class="menu__container__list__item__link" href="#">About</a>
+			</li>
+			<li class="menu__container__list__item">
+				<a class="menu__container__list__item__link" href="#">Careers</a>
+			</li>
+			<li class="menu__container__list__item">
+				<a class="menu__container__list__item__link" (click) = "onLogOut()" >Logout</a>
+			</li>
+		</ul>
+	</div>
+</nav>

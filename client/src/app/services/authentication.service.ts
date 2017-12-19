@@ -10,4 +10,8 @@ export class AuthenticationService {
 	return this.http.get('http://localhost:3000/', {withCredentials: true});
   }
 
+  logOut() {
+	  return this.http.get('http://localhost:3000/api/logout', {withCredentials: true});
+  }
+
 }

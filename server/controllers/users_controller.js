@@ -33,17 +33,23 @@ module.exports = {
 						"message": "User not found."
 					});
 				}
-
 				bcrypt.compare(req.body.password, user.password)
 					.then(result => {
-
-						req.session.userId = user._id;
-						req.session.save();
-						return req.session;
-
+						if(result === true) {
+							req.session.userId = user._id;
+							req.session.loggedIn = true;
+							req.session.save();
+							return req.session;
+						}
+						else {
+							res.json({
+								"status": "failed",
+								"message": "User password incorrect"
+							})
+						}
+						
 					})
 					.then(session => {
-						console.log(session);
 						session.save();
 						res.send(session)
 					})
@@ -73,6 +79,21 @@ module.exports = {
 
 			})
 			.catch(next)
+	},
+
+	logout(req, res, next) {
+		console.log('logout')
+		console.log(req.session)
+		if (req.session) {
+			// delete session object
+			req.session.destroy(function (err) {
+				if (err) {
+					return next(err);
+				} else {
+					return res.send('token deleted')
+				}
+			});
+		}
 	}
 
 }

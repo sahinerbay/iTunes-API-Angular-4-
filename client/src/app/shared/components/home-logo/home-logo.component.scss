@@ -1,0 +1,28 @@
+@import '~sass/mixins';
+@import '~sass/variables';
+
+:host {
+	width: 90%;
+}
+.logo {
+	width: 90%;
+	text-align: center;
+	margin: 0 auto;
+
+	&__size {
+		font-size: 10rem;
+		color: white;
+	}
+
+	&__heading {
+		color: white;
+		font-size: 2rem;
+		font-family: $roboto;
+		font-weight: $light;
+
+		&__thick {
+			font-weight: $bold;
+			letter-spacing: 0.3rem;
+		}
+	}
+}
