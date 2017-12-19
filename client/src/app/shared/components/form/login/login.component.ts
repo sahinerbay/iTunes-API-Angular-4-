@@ -14,19 +14,24 @@ export class LoginComponent {
 	constructor(private httpService: HttpItunesService, private router: Router) { };
 
 	private isLoggedIn: Boolean;
+	private status_code: String;
 
-	onSubmit(f) {
-		if (f.valid) {
-			this.httpService.loginUser(f.value).subscribe((result: ApiResponse) => {
-				if (result.loggedIn) {
-					this.isLoggedIn = result.loggedIn;
+	onSubmit(form) {
+		if (form.valid) {
+			this.httpService.loginUser(form.value).subscribe((result: ApiResponse) => {
+				this.isLoggedIn = true;
+				if (result.status === "success") {
 					this.router.navigate(['/']);
-				} else {
-					console.log(result.message)
+				} else if (result.status === "failed") {
+					this.status_code = result.code;
 				}
 			},
 				(err) => console.log(err))
 		}
+	}
+
+	setModal(event) {
+		this.isLoggedIn = event;
 	}
 
 }

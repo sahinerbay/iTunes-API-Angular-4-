@@ -1,3 +1,17 @@
-<p>
-  login-validator works!
-</p>
+<div class="modal" (click)="setModalInactive($event)">
+	<div class="modal__content">
+		<i class="modal__content__close fa fa-times" aria-hidden="true"></i>
+		<h2 class="modal__content__title">Error in login!</h2>
+		<div [ngSwitch]="code">
+			<p *ngSwitchCase="'101'">
+				Your email address is not registered. Please try again or
+				<a routerLink="/register">Register Here!</a>
+			</p>
+			<p *ngSwitchCase="'102'">
+				Your password is incorrect!
+				<a routerLink="/register">Please try again!</a>
+			</p>
+			<p *ngSwitchDefault=""></p>
+		</div>
+	</div>
+</div>

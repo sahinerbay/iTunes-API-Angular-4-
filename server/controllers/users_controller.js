@@ -29,13 +29,14 @@ module.exports = {
 			.then(user => {
 				if (!user) {
 					res.json({
+						"code": "101",
 						"status": "failed",
-						"message": "User not found."
+						"message": "Email not found."
 					});
 				}
 				bcrypt.compare(req.body.password, user.password)
 					.then(result => {
-						if(result === true) {
+						if (result === true) {
 							req.session.userId = user._id;
 							req.session.loggedIn = true;
 							req.session.save();
@@ -43,15 +44,19 @@ module.exports = {
 						}
 						else {
 							res.json({
+								"code":"102",
 								"status": "failed",
-								"message": "User password incorrect"
+								"message": "User password incorrect."
 							})
 						}
-						
+
 					})
 					.then(session => {
 						session.save();
-						res.send(session)
+						res.json({
+							"status": "success",
+							"message": "<div>User is successfully logged-in.</div>"
+						})
 					})
 					.catch(next)
 

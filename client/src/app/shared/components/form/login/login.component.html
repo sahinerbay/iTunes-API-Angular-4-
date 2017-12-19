@@ -1,7 +1,7 @@
 <app-home-logo></app-home-logo>
 <div class="login">
-	<form class="login__form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate method="post">
 
+	<form class="login__form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate method="post">
 		<input type="text" name="email" placeholder="Email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
 		 class="login__form__input" #email="ngModel" ngModel/>
 		<app-form-validator [form]="myForm.submitted" [control]="email"></app-form-validator>
@@ -10,13 +10,15 @@
 		/>
 		<app-form-validator [form]="myForm.submitted" [control]="password"></app-form-validator>
 
-		<button type="submit"  class="login__form__button">Login</button>
-
+		<button type="submit" class="login__form__button">Login</button>
 	</form>
+
 	<div class="login__footer">
 		<p class="login__footer__register">New to us?
 			<a class="login__footer__register__link" routerLink="/register">Sign Up</a>
 		</p>
 	</div>
+
 </div>
-<app-login-validator *ngIf = "isLoggedIn && myForm.valid"></app-login-validator>
+
+<app-login-validator *ngIf="isLoggedIn && myForm.valid" [code]="status_code" (modal)="setModal($event)"></app-login-validator>
