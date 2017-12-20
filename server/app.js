@@ -33,8 +33,6 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
-
 // Enable CORS from client-side
 app.use(function (req, res, next) {
 	res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
@@ -49,14 +47,13 @@ app.use(function (req, res, next) {
 */
 //app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res, next) => {
-	console.log('auth')
 	if (req.session && req.session.userId) {
 		res.json({
 			"auth": true
 		});
 	} else {
-	next();
-	
+		next();
+
 	}
 })
 app.use('/api', routes);

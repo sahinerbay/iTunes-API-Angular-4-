@@ -14,7 +14,7 @@ export class HttpItunesService {
 	}
 
 	registerUser(userProps) {
-		return this.http.post('http://localhost:3000/api/register', userProps);
+		return this.http.post('http://localhost:3000/api/register', userProps, {withCredentials: true});
 	}
 
 	loginUser(userProps) {

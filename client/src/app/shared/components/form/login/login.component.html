@@ -4,11 +4,11 @@
 	<form class="login__form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate method="post">
 		<input type="text" name="email" placeholder="Email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
 		 class="login__form__input" #email="ngModel" ngModel/>
-		<app-form-validator [form]="myForm.submitted" [control]="email"></app-form-validator>
+		<app-form-validator [form]="myForm.submitted" [control]="email" [type] ="'email'"></app-form-validator>
 
 		<input type="password" name="password" placeholder="Password" required class="login__form__input" #password="ngModel" ngModel
 		/>
-		<app-form-validator [form]="myForm.submitted" [control]="password"></app-form-validator>
+		<app-form-validator [form]="myForm.submitted" [control]="password" [type] ="'password'"></app-form-validator>
 
 		<button type="submit" class="login__form__button">Login</button>
 	</form>

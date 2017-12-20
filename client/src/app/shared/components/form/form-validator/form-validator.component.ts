@@ -13,14 +13,18 @@ import { AbstractControlDirective, AbstractControl } from '@angular/forms';
 export class FormValidatorComponent {
 
 	private static readonly errorMessages = {
-		'required': () => 'This field is required',
-		'pattern': (params) => 'The required pattern is: ' + params.requiredPattern,
+		'required': (params, name) => `${name} required!`,
+		'pattern': (params, name) => `${name} not valid!`,
 	};
 
 	@Input()
 	private control: AbstractControlDirective | AbstractControl;
+
 	@Input()
-	private form: Boolean;
+	private form: boolean;
+	
+	@Input()
+	private type: string
 
 	shouldShowErrors(): boolean {
 		return (this.form && !this.control.touched) || (this.control &&
@@ -30,11 +34,11 @@ export class FormValidatorComponent {
 
 	listOfErrors(): string[] {
 		return Object.keys(this.control.errors)
-			.map(field => this.getMessage(field, this.control.errors[field]));
+			.map(field => this.getMessage(field, this.control.errors[field], this.type));
 	}
 
-	getMessage(type: string, params: any) {
-		return FormValidatorComponent.errorMessages[type](params);
+	getMessage(type: string, params: any, name: any) {
+		return FormValidatorComponent.errorMessages[type](params, name);
 	}
 
 }

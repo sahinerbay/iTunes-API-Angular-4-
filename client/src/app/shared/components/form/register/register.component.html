@@ -1,32 +1,35 @@
+<!-- Home Logo -->
 <app-home-logo></app-home-logo>
 
-<div class="container">
-	<div class="registration">
-		<h1 class="registration__heading">
-			<strong>Welcome.</strong> Please register.</h1>
-		<form class="registration__form" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-			<input type="email" name="email" placeholder="Email" #email="ngModel" required class="registration__form__input" ngModel
-			 pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
-			/>
-			<span *ngIf="onValid(f, email)" class="help-block">Valid Email is required</span>
+<!-- Registration Form -->
+<div class="registration">
+	<form class="registration__form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate>
+		<input type="email" name="email" placeholder="Email" #email="ngModel" required class="registration__form__input" ngModel
+		 pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+		/>
+		<app-form-validator [form]="myForm.submitted" [control]="email" [type]="'email'"></app-form-validator>
 
-			<input type="text" name="username" placeholder="Username min 8 chars 1 digit and 1 special" #username="ngModel" required
-			 class="registration__form__input" ngModel />
-			<span *ngIf="onValid(f, username)" class="help-block">Valid Username is required</span>
+		<input type="text" name="fullname" placeholder="Full Name" #fullname="ngModel" required class="registration__form__input"
+		 ngModel />
+		<app-form-validator [form]="myForm.submitted" [control]="fullname" [type]="'full name'"></app-form-validator>
 
-			<input type="password" name="password" placeholder="Password" #password="ngModel" required class="registration__form__input"
-			 ngModel />
-			<span *ngIf="onValid(f, email)" class="help-block">Valid Password is required</span>
-			<input type="password" name="password" placeholder="Confirm Password" #confirmPassword="ngModel" required class="registration__form__input"
-			 ngModel />
-			<span *ngIf="confirmPassword !== password" class="help-block">passwords needs to match</span>
+		<input type="password" name="password" placeholder="Password" #password="ngModel" required class="registration__form__input"
+		 ngModel />
+		<app-form-validator [form]="myForm.submitted" [control]="password" [type]="'password'"></app-form-validator>
 
-			<button type="submit" class="registration__form__button">Register </button>
-		</form>
-		<div class="registration__footer">
-			<p class="registration__footer__register">Already have an account?
-				<a class="registration__footer__register__link" routerLink="/login">Log In</a>
-			</p>
-		</div>
+		<input type="password" name="confirmPassword" placeholder="Confirm Password" #confirmPassword="ngModel" required class="registration__form__input"
+		 ngModel />
+		<span *ngIf="onConfirmPassword(password, confirmPassword)" class="registration__form__error">Password not matched!</span>
+
+		<button type="submit" class="registration__form__button">Register </button>
+	</form>
+
+	<div class="registration__footer">
+		<p class="registration__footer__register">Already have an account?
+			<a class="registration__footer__register__link" routerLink="/login">Log In</a>
+		</p>
 	</div>
 </div>
+
+<!-- Modal Validates Login & Registration -->
+<app-login-validator *ngIf="isLoggedIn && myForm.valid" [code]="status_code" (modal)="setModal($event)"></app-login-validator>

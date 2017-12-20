@@ -6,7 +6,7 @@ module.exports = {
 	create(req, res, next) {
 
 		if (req.body.email &&
-			req.body.username &&
+			req.body.fullname &&
 			req.body.password) {
 
 			const userProps = req.body;
@@ -14,12 +14,25 @@ module.exports = {
 			//use schema.create to insert data into the db
 			User.create(userProps)
 				.then(user => {
-					console.log('user is registered');
-					console.log(user)
 					req.session.userId = user._id;
-					console.log(req.session.userId)
+					req.session.save();
+					res.json({
+						"code": "201",
+						"status": "success",
+						"message": "User successfully registered!"
+					})
 				})
-				.catch(next)
+				.catch(error => {
+					if (error.name === 'MongoError' && error.code === 11000) {
+						// Duplicate username
+						return res.json({
+							"code": "103",
+							"status": "failed",
+							"message": "Email is already registered!"
+						})
+					}
+					next();
+				})
 		}
 	},
 
@@ -28,7 +41,7 @@ module.exports = {
 		User.findOne({ email: userProps.email })
 			.then(user => {
 				if (!user) {
-					res.json({
+					return res.json({
 						"code": "101",
 						"status": "failed",
 						"message": "Email not found."
@@ -40,23 +53,19 @@ module.exports = {
 							req.session.userId = user._id;
 							req.session.loggedIn = true;
 							req.session.save();
-							return req.session;
+							res.json({
+								"status": "success",
+								"message": "User is successfully logged-in."
+							})
 						}
 						else {
-							res.json({
-								"code":"102",
+							return res.json({
+								"code": "102",
 								"status": "failed",
 								"message": "User password incorrect."
 							})
 						}
 
-					})
-					.then(session => {
-						session.save();
-						res.json({
-							"status": "success",
-							"message": "<div>User is successfully logged-in.</div>"
-						})
 					})
 					.catch(next)
 
@@ -65,7 +74,6 @@ module.exports = {
 	},
 
 	auth(req, res, next) {
-		console.log(req.session)
 		User.findById(req.session.userId)
 			.then(user => {
 				if (!user) {
@@ -87,8 +95,6 @@ module.exports = {
 	},
 
 	logout(req, res, next) {
-		console.log('logout')
-		console.log(req.session)
 		if (req.session) {
 			// delete session object
 			req.session.destroy(function (err) {

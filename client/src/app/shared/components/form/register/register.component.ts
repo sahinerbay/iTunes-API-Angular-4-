@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpItunesService } from './../../../../services/http-itunes.service';
+import { Router } from '@angular/router';
+import { ApiResponse } from './../.././../../interfaces/api';
 
 @Component({
 	selector: 'app-register',
@@ -8,21 +10,35 @@ import { HttpItunesService } from './../../../../services/http-itunes.service';
 })
 export class RegisterComponent {
 
-		constructor(private httpService: HttpItunesService){};
+	constructor(private httpService: HttpItunesService, private router: Router) { };
 
-	onSubmit(f) {
-		console.log(f.value)
-			this.httpService.registerUser(f.value).subscribe((res)=> {
-				console.log(res)
+	private isLoggedIn: Boolean;
+	private status_code: String;
+
+	onSubmit(form) {
+		if (form.valid) {
+			this.isLoggedIn = true;
+			this.httpService.registerUser(form.value).subscribe((result: ApiResponse) => {
+				if (result.status === "success") {
+					this.router.navigate(['/']);
+				} else if (result.status === "failed") {
+					this.status_code = result.code;
+				}
 			},
-			err => console.log(err)
-		)
-	}
-
-	onValid(form, input) {
-		if ((form.submitted || input.dirty) && !input.valid) {
-			return true
+				err => console.log(err)
+			)
 		}
 	}
-//pattern="^(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+
+	onConfirmPassword(initialPassword, confirmPassword) {
+		if (initialPassword.dirty && confirmPassword.dirty) {
+			return initialPassword.value !== confirmPassword.value
+		}
+		return false;
+	}
+
+	setModal(event) {
+		this.isLoggedIn = event;
+	}
+
 }

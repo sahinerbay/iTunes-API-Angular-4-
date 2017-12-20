@@ -12,13 +12,13 @@ export class LoginValidatorComponent {
 
 	@Output() modal = new EventEmitter<boolean>();
 
-	vote(is_active: boolean) {
+	onModalClose(is_active: boolean) {
 		this.modal.emit(is_active);
 	}
 
 	@HostListener('click', ['$event']) setModalInactive(event) {
 		if (event.target.className === 'modal__content__close fa fa-times' || event.target.className === 'modal') {
-			this.vote(false);
+			this.onModalClose(false);
 		}
 	}
 

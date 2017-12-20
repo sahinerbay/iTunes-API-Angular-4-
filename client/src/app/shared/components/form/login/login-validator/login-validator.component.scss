@@ -1,3 +1,6 @@
+@import '~sass/mixins';
+@import '~sass/variables';
+
 .modal {
 	display: flex;
   justify-content: center;
@@ -34,5 +37,17 @@
 
 	&__content__title {
 		text-align: center;
+	}
+
+	@include atTablet {
+		&__content {
+			width: 80%;
+		}
+	}
+
+	@include atDesktop {
+		&__content {
+			width: 50%;
+		}
 	}
 }

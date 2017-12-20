@@ -1,7 +1,16 @@
 <div class="modal" (click)="setModalInactive($event)">
 	<div class="modal__content">
 		<i class="modal__content__close fa fa-times" aria-hidden="true"></i>
-		<h2 class="modal__content__title">Error in login!</h2>
+
+		<div [ngSwitch]="code">
+			<h2 class="modal__content__title" *ngSwitchCase="'201'">
+				Congratulation!
+			</h2>
+			<h2 class="modal__content__title" *ngSwitchDefault>
+				Error in login!
+			</h2>
+		</div>
+
 		<div [ngSwitch]="code">
 			<p *ngSwitchCase="'101'">
 				Your email address is not registered. Please try again or
@@ -10,6 +19,13 @@
 			<p *ngSwitchCase="'102'">
 				Your password is incorrect!
 				<a routerLink="/register">Please try again!</a>
+			</p>
+			<p *ngSwitchCase="'103'">
+				Email is already registered! Please
+				<a routerLink="/login">login here.</a>
+			</p>
+			<p *ngSwitchCase="'201'">
+				You have successfully registered and logged in.
 			</p>
 			<p *ngSwitchDefault=""></p>
 		</div>
