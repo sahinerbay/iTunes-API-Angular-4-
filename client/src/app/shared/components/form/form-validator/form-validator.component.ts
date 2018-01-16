@@ -27,14 +27,16 @@ export class FormValidatorComponent {
 	private type: string
 
 	shouldShowErrors(): boolean {
-		return (this.form && !this.control.touched) || (this.control &&
-			this.control.errors &&
-			(this.control.dirty || this.control.touched));
+		return (this.form) || (this.control && this.control.errors && (this.control.dirty || this.control.touched));
 	}
 
 	listOfErrors(): string[] {
-		return Object.keys(this.control.errors)
-			.map(field => this.getMessage(field, this.control.errors[field], this.type));
+		if (this.control.errors) {
+			return Object.keys(this.control.errors)
+				.map(errorType => {
+					return this.getMessage(errorType, this.control.errors[errorType], this.type)
+				});
+		}
 	}
 
 	getMessage(type: string, params: any, name: any) {

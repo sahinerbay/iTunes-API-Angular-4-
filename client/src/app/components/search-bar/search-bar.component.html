@@ -1,7 +1,7 @@
 <div class="searchbar">
    <div class="searchbar__container">
-      <input type="text" class="searchbar__container__search-term" placeholder="Search for music?" #searchTerm>
-      <button type="submit" class="searchbar__container__search-button" (click)="onNavigate(searchTerm.value)">
+      <input type="text" class="searchbar__container__search-term" placeholder="Search for music?" #searchTerm  (keyup.enter)="onNavigate(searchTerm.value)">
+      <button type="submit" class="searchbar__container__search-button" (click)="onNavigate(searchTerm.value)" >
         <i class="fa fa-search"></i>
      </button>
    </div>
