@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './shared/components/form/register/register.component';
 import { LoginComponent } from './shared/components/form/login/login.component';
 import { SongsListComponent } from './components/songs-list/songs-list.component';
-import { HomeComponent } from './components/home.component';
+import { HomeComponent } from './components/pages/home/home.component';
 
 import { AuthGuardService } from './guards/auth-guard.service';
 

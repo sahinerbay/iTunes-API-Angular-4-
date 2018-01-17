@@ -1,16 +1,18 @@
 var express = require('express');
 var router = express.Router();
-const User = require('./../models/user');
+
 const UserController = require('./../controllers/users_controller');
+const FavoriteController = require('./../controllers/favorites_controller');
 
 
+router.post('/favorites/', FavoriteController.add);
 
 // About page route
 router.post('/register/', UserController.create);
 router.post('/login/', UserController.login);
 
 // Home page route
-router.get('/logout/', UserController.logout);
+router.post('/logout/', UserController.logout);
 
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './../../services/authentication.service';
+import { AuthenticationService } from '@app/services/authentication.service';
 
 @Component({
 	selector: 'app-header',
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 	onLogOut() {
 		this.authenticationService.logOut()
 		.subscribe(result=> console.log(result))
-		this.router.navigate(['/login']);
+		this.router.navigate(['/login'], { skipLocationChange: true });
 	}
 
 }

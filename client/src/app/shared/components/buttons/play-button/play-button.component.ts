@@ -9,8 +9,8 @@ export class PlayButtonComponent implements OnInit, AfterViewInit {
 
 	constructor(private renderer: Renderer2) { }
 
-	private textContent: string = "Play";
-	private icon: string = "fa fa-play-circle";
+	textContent: string = "Play";
+	icon: string = "fa fa-play-circle";
 
 	ngOnInit() {
 	}

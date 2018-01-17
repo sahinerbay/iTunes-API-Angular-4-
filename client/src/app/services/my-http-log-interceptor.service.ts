@@ -18,7 +18,7 @@ export class MyHttpLogInterceptor implements HttpInterceptor {
 		return next.handle(req)
 			.do((event: HttpEvent<any>) => {
 				if (event instanceof HttpResponse) {
-					console.log(event);
+					//experimental code
 				}
 			});
 	}

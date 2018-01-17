@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { ShareDataService } from './../../../services/share-data.service';
-import { Itunes } from './../../../interfaces/itunes';
+import { ShareDataService } from '@app/services/share-data.service';
+import { Itunes } from '@app/interfaces/itunes';
+import { Song } from '@app/interfaces/song'
 
 @Component({
 	selector: 'app-song',
@@ -21,7 +22,7 @@ export class SongComponent implements OnInit {
 		this.shareDataService.updateCurrentSong(+event.target.attributes[2].value)
 	}
 
-	@Input() song: Array<string>;
+	@Input() song: Song;
 
 	ngOnInit() {
 		this.shareDataService.getState()

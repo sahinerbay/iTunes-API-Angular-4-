@@ -31,8 +31,10 @@ import { LoginComponent } from './shared/components/form/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeLogoComponent } from './shared/components/home-logo/home-logo.component';
 import { FormValidatorComponent } from './shared/components/form/form-validator/form-validator.component';
-import { HomeComponent } from './components/home.component';
+import { HomeComponent } from './components/pages/home/home.component';
 import { LoginValidatorComponent } from './shared/components/form/login/login-validator/login-validator.component';
+import { FavoritesComponent } from './components/pages/favorites/favorites.component';
+import { PlaylistComponent } from './components/pages/playlist/playlist.component';
 
 @NgModule({
 	declarations: [
@@ -53,6 +55,8 @@ import { LoginValidatorComponent } from './shared/components/form/login/login-va
 		FormValidatorComponent,
 		HomeComponent,
 		LoginValidatorComponent,
+		FavoritesComponent,
+		PlaylistComponent,
 	],
 	imports: [
 		BrowserModule,

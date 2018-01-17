@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Renderer2 } from '@angular/core';
-import { ShareDataService } from './../../../services/share-data.service';
+import { ShareDataService } from '@app/services/share-data.service';
+import { Song } from '@app/interfaces/song';
 
 @Component({
 	selector: 'app-song-info',
@@ -13,7 +14,7 @@ export class SongInfoComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	@Input() song: Array<string>;
+	@Input() song: Song;
 
 	setModalActive(event) {
 		event.preventDefault();

@@ -7,8 +7,8 @@
 	<div class="song__settings">
 		<app-play-button [songUrl] ="song.previewUrl"></app-play-button>
 		<div class="song__settings__add">
-			<app-add-button [content]="'Add to favourites'"></app-add-button>
-			<app-add-button [content]="'Add to playlist'"></app-add-button>
+			<app-add-button [content]="'Add to favourites'" [song]="song"></app-add-button>
+			<app-add-button [content]="'Add to playlist'" [song]="song"></app-add-button>
 		</div>
 	</div>
 </div>

@@ -13,7 +13,7 @@ export class LoginComponent {
 
 	constructor(private httpService: HttpItunesService, private router: Router) { };
 
-	private isLoggedIn: Boolean;
+	isLoggedIn: Boolean;
 	private status_code: String;
 
 	onSubmit(form) {
@@ -21,7 +21,7 @@ export class LoginComponent {
 			this.httpService.loginUser(form.value).subscribe((result: ApiResponse) => {
 				this.isLoggedIn = true;
 				if (result.status === "success") {
-					this.router.navigate(['/']);
+					this.router.navigate(['/'], { skipLocationChange: true });
 				} else if (result.status === "failed") {
 					this.status_code = result.code;
 				}

@@ -1,4 +1,4 @@
-<a class="add" href="">
+<a class="add" [title]="content === 'Add to favourites' ? 'Add to favourites' : 'Add to playlist'" (click)= "addSong(song)">
 	<span class="add__content">{{content}}</span>
 	<i [ngClass]="{'fa-heart-o': content === 'Add to favourites', 'fa-plus-circle': content === 'Add to playlist'}" class="fa" aria-hidden="true"></i>
 </a>

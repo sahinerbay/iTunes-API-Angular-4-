@@ -1,20 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ShareDataService } from './../../../services/share-data.service';
+import { Component, Input } from '@angular/core';
+import { ShareDataService } from '@app/services/share-data.service';
+import { Song } from '@app/interfaces/song';
 
 @Component({
-  selector: 'app-song-artwork',
-  templateUrl: './song-artwork.component.html',
-  styleUrls: ['./song-artwork.component.scss']
+	selector: 'app-song-artwork',
+	templateUrl: './song-artwork.component.html',
+	styleUrls: ['./song-artwork.component.scss']
 })
-export class SongArtworkComponent implements OnInit {
+export class SongArtworkComponent {
 
 	constructor(private shareDataService: ShareDataService) { }
-	
+
 	private isModalActive: boolean = false;
 
-  ngOnInit() {
-	}
-	
+	@Input() song: Song;
+
 	setModalActive(event) {
 		event.preventDefault();
 		this.isModalActive = true;
@@ -22,7 +22,5 @@ export class SongArtworkComponent implements OnInit {
 		this.shareDataService.updateCurrentSong(+event.target.attributes['data-id'].value);
 		document.body.className = 'overflow-hidden';
 	}
-
-	@Input() song: Array<string>;
 
 }

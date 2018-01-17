@@ -74,6 +74,7 @@ module.exports = {
 	},
 
 	auth(req, res, next) {
+		console.log('auth auth' + req.session.userId)
 		User.findById(req.session.userId)
 			.then(user => {
 				if (!user) {
@@ -95,15 +96,14 @@ module.exports = {
 	},
 
 	logout(req, res, next) {
-		if (req.session) {
+		//req.session.userId = undefined WHY?
+		if (req.session.userId) {
 			// delete session object
-			req.session.destroy(function (err) {
-				if (err) {
-					return next(err);
-				} else {
-					return res.send('token deleted')
-				}
+			req.session.destroy(function () {
+				res.clearCookie('connect.sid', { path: '/' });
 			});
+		} else {
+			console.log('userId not found')
 		}
 	}
 

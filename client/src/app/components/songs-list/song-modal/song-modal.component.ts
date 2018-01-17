@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ShareDataService } from './../../../services/share-data.service';
-import { Itunes } from './../../../interfaces/itunes';
+import { ShareDataService } from '@app/services/share-data.service';
+import { Itunes } from '@app/interfaces/itunes';
+import { Song } from '@app/interfaces/song'
 
 @Component({
 	selector: 'app-song-modal',
@@ -12,7 +13,7 @@ export class SongModalComponent implements OnInit {
 	constructor(private shareDataService: ShareDataService) { }
 
 	private isModalActive: boolean = false;
-	private song: Object;
+	song: Song;
 
 	ngOnInit() {
 		this.shareDataService.getState()

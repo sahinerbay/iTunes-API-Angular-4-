@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 app.use(session({
 	secret: 'work hard',
-	resave: true,
+	resave: false,
 	saveUninitialized: false,
 	store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
@@ -42,18 +42,16 @@ app.use(function (req, res, next) {
 	next();
 });
 
-/*express.static is a built in middleware function to serve static files.
- We are telling express server public folder is the place to look for the static files
-*/
-//app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res, next) => {
+	console.log('auth ' + req.session.userId)
 	if (req.session && req.session.userId) {
 		res.json({
 			"auth": true
 		});
 	} else {
-		next();
-
+		res.json({
+			"auth": false
+		});
 	}
 })
 app.use('/api', routes);

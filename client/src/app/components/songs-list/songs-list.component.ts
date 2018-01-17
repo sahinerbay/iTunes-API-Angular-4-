@@ -14,7 +14,7 @@ export class SongsListComponent implements OnInit {
 
 	constructor(private httpItunesService: HttpItunesService, private shareDataService: ShareDataService, private route: ActivatedRoute) { }
 
-	private songsList: Itunes = {
+	songsList: Itunes = {
 		resultCount: null,
 		results: [],
 		isModalActive: false,

@@ -12,7 +12,7 @@ export class RegisterComponent {
 
 	constructor(private httpService: HttpItunesService, private router: Router) { };
 
-	private isLoggedIn: Boolean;
+	isLoggedIn: Boolean;
 	private status_code: String;
 
 	onSubmit(form) {

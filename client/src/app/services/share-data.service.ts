@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Rx';
-import { Itunes } from './../interfaces/itunes';
+import { Observable } from 'rxjs/Observable';
+import { Itunes } from '@app/interfaces/itunes';
 
 @Injectable()
 export class ShareDataService {

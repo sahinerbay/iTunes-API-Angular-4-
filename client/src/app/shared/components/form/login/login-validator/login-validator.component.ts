@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter, HostListener } from '@angular/c
 export class LoginValidatorComponent {
 
 	@Input()
-	private code: string;
+	code: string;
 
 	@Output() modal = new EventEmitter<boolean>();
 

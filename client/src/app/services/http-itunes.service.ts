@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
-import { environment } from './../../environments/environment';
+import { Observable } from 'rxjs/Observable';
+import { environment } from '@env/environment.prod';
 
 @Injectable()
 export class HttpItunesService {
@@ -14,11 +14,15 @@ export class HttpItunesService {
 	}
 
 	registerUser(userProps) {
-		return this.http.post('http://localhost:3000/api/register', userProps, {withCredentials: true});
+		return this.http.post(`${environment.SERVER_URL}/api/register`, userProps, {withCredentials: true});
 	}
 
 	loginUser(userProps) {
-		return this.http.post('http://localhost:3000/api/login', userProps, {withCredentials: true})
+		return this.http.post(`${environment.SERVER_URL}/api/login`, userProps, {withCredentials: true})
 	}
-	//search?term=jack+johnson
+	
+	
+	addSong(songProps) {
+		return this.http.post(`${environment.SERVER_URL}/api/favorites`, songProps, {withCredentials: true});
+	}
 }
